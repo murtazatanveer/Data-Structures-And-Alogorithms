@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Array_List",
+      "request": "launch",
+      "mainClass": "Arrays.Array_List",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "Insertion_Sort",
+      "request": "launch",
+      "mainClass": "Insertion_Sort",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
       "name": "priorityQueue",
       "request": "launch",
       "mainClass": "Queue.priorityQueue",
