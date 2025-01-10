@@ -35,19 +35,7 @@ int main() {
     shuffleCharacters(chars);
     fillGrid(grid, chars);
 
-    //  char c = 'A';
-
-    // printf("\t1\t2\t3\t4\t5\t6\n\n");
-
-    // for (int i = 0; i < 6; i++) {
-    //     printf("%c", c);
-    //     for (int j = 0; j < 6; j++) { 
-    //         printf("\t%c",grid[i][j]);
-    //     }
-    //     printf("\n");
-    //     c++;
-    // }
-
+    
     int score1 = 0, score2 = 0, charsUsed = 0;
     char pos1[3], pos2[3];
     bool isRetake=0;

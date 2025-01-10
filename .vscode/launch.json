@@ -6,6 +6,69 @@
   "configurations": [
     {
       "type": "java",
+      "name": "gameingHub",
+      "request": "launch",
+      "mainClass": "Lab_Final.gameingHub",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "JokerGame",
+      "request": "launch",
+      "mainClass": "Lab_Final.JokerGame",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "AlphabetGraph3D",
+      "request": "launch",
+      "mainClass": "Lab_Final.AlphabetGraph3D",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "Graph3D",
+      "request": "launch",
+      "mainClass": "Lab_Final.Graph3D",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "ShortestPath",
+      "request": "launch",
+      "mainClass": "Lab_Final.ShortestPath",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "MineSweeper",
+      "request": "launch",
+      "mainClass": "Lab_Final.MineSweeper",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "MineGame",
+      "request": "launch",
+      "mainClass": "Lab_Final.MineGame",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "adjacencyListGraph",
+      "request": "launch",
+      "mainClass": "Graphs.adjacencyListGraph",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
+      "name": "NavigationSystem",
+      "request": "launch",
+      "mainClass": "NavigationSystem",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
       "name": "Array_List",
       "request": "launch",
       "mainClass": "Arrays.Array_List",
