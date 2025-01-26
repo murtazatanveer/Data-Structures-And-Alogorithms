@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "adjacencyListGraph",
+      "request": "launch",
+      "mainClass": "Graphs.adjacencyListGraph",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
+      "name": "abc",
+      "request": "launch",
+      "mainClass": "abc",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
       "name": "gameingHub",
       "request": "launch",
       "mainClass": "Lab_Final.gameingHub",

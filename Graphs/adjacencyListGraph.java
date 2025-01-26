@@ -142,11 +142,63 @@ class adjacencyListGraph {
 
      }
 
+
+     void DFS(char startingVertex){
+
+        vertex start =null;
+
+        for(int i=0;i<vertices.size();i++){
+            if (vertices.get(i).value==startingVertex) {
+                start=vertices.get(i);
+            }
+        }
+    
+        if (start==null) {
+            System.out.println("Given Vertex Doesnot Exist in Graph");
+            return;
+            }
+
+            Stack <vertex> s = new Stack<>();
+
+            System.out.print("\nVertices : "+start.value+"\t");
+
+            start.isVisited=true;
+            s.push(start);
+            boolean flag = true;
+
+            while (!s.isEmpty()) {
+
+                vertex current = s.peek();
+
+                for (int i = 0; i < edges.get(current.index).size(); i++) {
+
+                    vertex neighbour = edges.get(current.index).get(i).des;
+
+                    if (!neighbour.isVisited) {
+
+                        s.push(neighbour);
+                        neighbour.isVisited=true;
+                        flag=false;
+                        System.out.print(neighbour.value+"\t");
+                        break;
+                    }
+                }
+
+                if (flag) {
+                    s.pop();
+                }
+                flag=true;
+            }
+            
+
+     }
+
     public static void main(String[] args) {
         
         adjacencyListGraph g = new adjacencyListGraph(7);
         
-      g.BFS('A');
+      //g.BFS('A');
+        g.DFS('D');
 }
 
 }
