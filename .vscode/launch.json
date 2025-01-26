@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "dijkstraAlgorithm",
+      "request": "launch",
+      "mainClass": "Graphs.dijkstraAlgorithm",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
       "name": "adjacencyListGraph",
       "request": "launch",
       "mainClass": "Graphs.adjacencyListGraph",
