@@ -6,6 +6,41 @@
   "configurations": [
     {
       "type": "java",
+      "name": "MinimumSpanningTree",
+      "request": "launch",
+      "mainClass": "Graphs.MinimumSpanningTree",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
+      "name": "minimumSpanningTree",
+      "request": "launch",
+      "mainClass": "Graphs.minimumSpanningTree",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
+      "name": "DFS_And_BFS",
+      "request": "launch",
+      "mainClass": "Graphs.DFS_And_BFS",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
+      "name": "heap",
+      "request": "launch",
+      "mainClass": "Trees.heap",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
+      "name": "expressionTree",
+      "request": "launch",
+      "mainClass": "Trees.expressionTree",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
       "name": "dijkstraAlgorithm",
       "request": "launch",
       "mainClass": "Graphs.dijkstraAlgorithm",

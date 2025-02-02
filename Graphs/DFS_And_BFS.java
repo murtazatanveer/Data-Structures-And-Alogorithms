@@ -34,7 +34,7 @@ class vertex{
 
 }
 
-class adjacencyListGraph {
+class DFS_And_BFS {
 
     ArrayList<ArrayList<edge>> edges;
     ArrayList<vertex> vertices;
@@ -42,7 +42,7 @@ class adjacencyListGraph {
     Scanner inp = new Scanner(System.in);
 
     
-    adjacencyListGraph(int vertices){
+    DFS_And_BFS(int vertices){
 
         edges=new ArrayList<>(10);
         this.vertices=new ArrayList<>(vertices);
@@ -195,7 +195,7 @@ class adjacencyListGraph {
 
     public static void main(String[] args) {
         
-        adjacencyListGraph g = new adjacencyListGraph(7);
+        DFS_And_BFS g = new DFS_And_BFS(7);
         
       //g.BFS('A');
         g.DFS('D');
