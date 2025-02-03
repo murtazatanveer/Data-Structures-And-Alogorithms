@@ -114,6 +114,10 @@ class DFS_And_BFS {
             System.out.println("Given Vertex Doesnot Exist in Graph");
             return;
             }
+
+            for (vertex v : vertices) {
+                v.isVisited = false;
+            }
             
             Queue<vertex> q = new LinkedList<>();
             q.add(start);
@@ -158,6 +162,10 @@ class DFS_And_BFS {
             return;
             }
 
+            for (vertex v : vertices) {
+                v.isVisited = false;
+            }
+            
             Stack <vertex> s = new Stack<>();
 
             System.out.print("\nVertices : "+start.value+"\t");
@@ -197,8 +205,8 @@ class DFS_And_BFS {
         
         DFS_And_BFS g = new DFS_And_BFS(7);
         
-      //g.BFS('A');
-        g.DFS('D');
+      g.BFS('A');
+        g.DFS('A');
 }
 
 }

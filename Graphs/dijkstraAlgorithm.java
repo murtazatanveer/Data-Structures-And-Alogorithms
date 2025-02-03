@@ -5,12 +5,12 @@ import java.util.*;
 
 class edge_ {
 
-    vertex src; 
-    vertex des;
+    vertex_ src; 
+    vertex_ des;
     int weight; 
 
    
-    edge_(vertex src, vertex des, int weight) {
+    edge_(vertex_ src, vertex_ des, int weight) {
         this.src = src;
         this.des = des;
         this.weight = weight;
@@ -18,7 +18,7 @@ class edge_ {
 }
 
 
-class vertex{
+class vertex_{
     
 
     int index;
@@ -26,14 +26,14 @@ class vertex{
     boolean isVisited;
     int distance;
 
-    vertex(){
+    vertex_(){
         index=-1;
         value=' ';
         isVisited=false;
         distance=0;
     }
 
-    vertex(int index , char value){
+    vertex_(int index , char value){
         this.index=index;
         this.value=value;
         isVisited=false;
@@ -54,7 +54,7 @@ class vertex{
 class dijkstraAlgorithm{
 
     ArrayList<ArrayList<edge_>> edges;
-    ArrayList<vertex> vertices;
+    ArrayList<vertex_> vertices;
 
     Scanner inp = new Scanner(System.in);
 
@@ -73,11 +73,11 @@ class dijkstraAlgorithm{
     }
 
     void createGraph() {
-        vertices.add(new vertex(0, 'A')); // Vertex 0
-        vertices.add(new vertex(1, 'B')); // Vertex 1
-        vertices.add(new vertex(2, 'C')); // Vertex 2
-        vertices.add(new vertex(3, 'D')); // Vertex 3
-        vertices.add(new vertex(4, 'E')); // Vertex 4
+        vertices.add(new vertex_(0, 'A')); // Vertex 0
+        vertices.add(new vertex_(1, 'B')); // Vertex 1
+        vertices.add(new vertex_(2, 'C')); // Vertex 2
+        vertices.add(new vertex_(3, 'D')); // Vertex 3
+        vertices.add(new vertex_(4, 'E')); // Vertex 4
     
         
         edges.get(0).add(new edge_(vertices.get(0), vertices.get(1), 4)); // A -> B
@@ -89,23 +89,23 @@ class dijkstraAlgorithm{
         edges.get(1).add(new edge_(vertices.get(1), vertices.get(2), 1)); // B -> C
         edges.get(2).add(new edge_(vertices.get(2), vertices.get(1), 1)); // C -> B
     
-        edges.get(1).add(new edge(vertices.get(1), vertices.get(3), 5)); // B -> D
-        edges.get(3).add(new edge(vertices.get(3), vertices.get(1), 5)); // D -> B
+        edges.get(1).add(new edge_(vertices.get(1), vertices.get(3), 5)); // B -> D
+        edges.get(3).add(new edge_(vertices.get(3), vertices.get(1), 5)); // D -> B
     
-        edges.get(2).add(new edge(vertices.get(2), vertices.get(3), 8)); // C -> D
-        edges.get(3).add(new edge(vertices.get(3), vertices.get(2), 8)); // D -> C
+        edges.get(2).add(new edge_(vertices.get(2), vertices.get(3), 8)); // C -> D
+        edges.get(3).add(new edge_(vertices.get(3), vertices.get(2), 8)); // D -> C
     
-        edges.get(2).add(new edge(vertices.get(2), vertices.get(4), 10)); // C -> E
-        edges.get(4).add(new edge(vertices.get(4), vertices.get(2), 10)); // E -> C
+        edges.get(2).add(new edge_(vertices.get(2), vertices.get(4), 10)); // C -> E
+        edges.get(4).add(new edge_(vertices.get(4), vertices.get(2), 10)); // E -> C
     
-        edges.get(3).add(new edge(vertices.get(3), vertices.get(4), 2)); // D -> E
-        edges.get(4).add(new edge(vertices.get(4), vertices.get(3), 2)); // E -> D
+        edges.get(3).add(new edge_(vertices.get(3), vertices.get(4), 2)); // D -> E
+        edges.get(4).add(new edge_(vertices.get(4), vertices.get(3), 2)); // E -> D
     }
     
 
      void ALGORITHM(char startingVertex){
 
-        vertex start =null;
+        vertex_ start =null;
 
         for(int i=0;i<vertices.size();i++){
             if (vertices.get(i).value==startingVertex) {
@@ -118,7 +118,7 @@ class dijkstraAlgorithm{
             return;
             }
 
-        PriorityQueue<vertex> pq = new PriorityQueue<>((a, b) -> Integer.compare(a.distance, b.distance));
+        PriorityQueue<vertex_> pq = new PriorityQueue<>((a, b) -> Integer.compare(a.distance, b.distance));
 
        pq.add(start);
 
@@ -126,15 +126,15 @@ class dijkstraAlgorithm{
 
        while (!pq.isEmpty()) {
         
-        vertex current = pq.poll();
+        vertex_ current = pq.poll();
         if (current.isVisited) continue;
         current.isVisited=true;
         System.out.println("Vertex " + current.value + " and Distance : " + current.distance);
 
         for (int i = 0; i < edges.get(current.index).size(); i++) {
 
-            vertex neighbour = edges.get(current.index).get(i).des;
- 00           edge e = edges.get(current.index).get(i);
+            vertex_ neighbour = edges.get(current.index).get(i).des;
+           edge_ e = edges.get(current.index).get(i);
             int sum=e.weight+current.distance;
 
             if (!neighbour.isVisited && sum<neighbour.distance) {

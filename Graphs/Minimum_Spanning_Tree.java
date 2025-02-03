@@ -41,7 +41,7 @@ class Vertex {
     }
 }
 
-class minimumSpanningTree {
+ class minimumSpanningTree {
 
     ArrayList<ArrayList<Edge>> edges;
     ArrayList<Vertex> vertices;
@@ -57,6 +57,33 @@ class minimumSpanningTree {
         }
 
         createGraph();
+    }
+
+    void kruskalAlgorithm(){
+
+        PriorityQueue<Edge> pq = new PriorityQueue<>();
+        for (int i = 0; i < edges.size(); i++) {
+            for (int j = 0; j < edges.get(i).size(); j++) {
+                pq.add(edges.get(i).get(j));
+            }
+        }
+
+        while (!pq.isEmpty()) {
+
+            Edge curr = pq.poll();
+
+            if (!curr.src.isVisited || !curr.des.isVisited) {
+                System.out.println(curr.src.value+" --> "+curr.des.value);
+                if (!curr.des.isVisited) {
+                    curr.des.isVisited=true;
+                }
+                if (!curr.src.isVisited) {
+                    curr.src.isVisited=true;
+                }
+            }
+
+        }
+
     }
 
     void primsAlgorithm(char startingVertex){
@@ -100,6 +127,7 @@ class minimumSpanningTree {
     }
 
     void createGraph() {
+
         vertices.add(new Vertex(0, 'G'));
         vertices.add(new Vertex(1, 'F'));
         vertices.add(new Vertex(2, 'E'));
@@ -138,10 +166,16 @@ class minimumSpanningTree {
         edges.get(3).add(new Edge(vertices.get(3), vertices.get(6), 60));
         edges.get(3).add(new Edge(vertices.get(3), vertices.get(5), 15));
     }
+    
+}
 
+
+public class Minimum_Spanning_Tree{
     public static void main(String[] args) {
 
         minimumSpanningTree g = new minimumSpanningTree(7);
-        g.primsAlgorithm('G');
+        // g.primsAlgorithm('G');
+        g.kruskalAlgorithm();
     }
 }
+
