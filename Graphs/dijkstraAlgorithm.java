@@ -3,14 +3,14 @@ package Graphs;
 import java.util.*;
 
 
-class edge {
+class edge_ {
 
     vertex src; 
     vertex des;
     int weight; 
 
    
-    edge(vertex src, vertex des, int weight) {
+    edge_(vertex src, vertex des, int weight) {
         this.src = src;
         this.des = des;
         this.weight = weight;
@@ -53,7 +53,7 @@ class vertex{
 
 class dijkstraAlgorithm{
 
-    ArrayList<ArrayList<edge>> edges;
+    ArrayList<ArrayList<edge_>> edges;
     ArrayList<vertex> vertices;
 
     Scanner inp = new Scanner(System.in);
@@ -80,14 +80,14 @@ class dijkstraAlgorithm{
         vertices.add(new vertex(4, 'E')); // Vertex 4
     
         
-        edges.get(0).add(new edge(vertices.get(0), vertices.get(1), 4)); // A -> B
-        edges.get(1).add(new edge(vertices.get(1), vertices.get(0), 4)); // B -> A
+        edges.get(0).add(new edge_(vertices.get(0), vertices.get(1), 4)); // A -> B
+        edges.get(1).add(new edge_(vertices.get(1), vertices.get(0), 4)); // B -> A
     
-        edges.get(0).add(new edge(vertices.get(0), vertices.get(2), 2)); // A -> C
-        edges.get(2).add(new edge(vertices.get(2), vertices.get(0), 2)); // C -> A
+        edges.get(0).add(new edge_(vertices.get(0), vertices.get(2), 2)); // A -> C
+        edges.get(2).add(new edge_(vertices.get(2), vertices.get(0), 2)); // C -> A
     
-        edges.get(1).add(new edge(vertices.get(1), vertices.get(2), 1)); // B -> C
-        edges.get(2).add(new edge(vertices.get(2), vertices.get(1), 1)); // C -> B
+        edges.get(1).add(new edge_(vertices.get(1), vertices.get(2), 1)); // B -> C
+        edges.get(2).add(new edge_(vertices.get(2), vertices.get(1), 1)); // C -> B
     
         edges.get(1).add(new edge(vertices.get(1), vertices.get(3), 5)); // B -> D
         edges.get(3).add(new edge(vertices.get(3), vertices.get(1), 5)); // D -> B
@@ -134,7 +134,7 @@ class dijkstraAlgorithm{
         for (int i = 0; i < edges.get(current.index).size(); i++) {
 
             vertex neighbour = edges.get(current.index).get(i).des;
-            edge e = edges.get(current.index).get(i);
+ 00           edge e = edges.get(current.index).get(i);
             int sum=e.weight+current.distance;
 
             if (!neighbour.isVisited && sum<neighbour.distance) {

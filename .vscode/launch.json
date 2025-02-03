@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "circularQueue",
+      "request": "launch",
+      "mainClass": "Queue.circularQueue",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
+      "name": "queue",
+      "request": "launch",
+      "mainClass": "Queue.queue",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
       "name": "MinimumSpanningTree",
       "request": "launch",
       "mainClass": "Graphs.MinimumSpanningTree",

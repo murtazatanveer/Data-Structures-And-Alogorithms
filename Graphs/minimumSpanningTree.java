@@ -1,7 +1,6 @@
 package Graphs;
 
 import java.util.*;
-
 class Edge implements Comparable<Edge>{
 
     Vertex src;
@@ -121,7 +120,7 @@ class minimumSpanningTree {
         edges.get(1).add(new Edge(vertices.get(1), vertices.get(3), 5));
         edges.get(1).add(new Edge(vertices.get(1), vertices.get(0), 40));
 
-        edges.get(2).add(new Edge(vertices.get(2), vertices.get(3), 55)); // Remove duplicate
+        edges.get(2).add(new Edge(vertices.get(2), vertices.get(3), 55)); 
         edges.get(2).add(new Edge(vertices.get(2), vertices.get(5), 45));
 
         edges.get(5).add(new Edge(vertices.get(5), vertices.get(2), 45));

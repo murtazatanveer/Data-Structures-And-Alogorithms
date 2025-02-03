@@ -194,7 +194,7 @@ public class queue {
 
     //    queue.displayQueue();
 
-    dynamicQueue q = new dynamicQueue(4);
+    dynamicQueue q = new dynamicQueue(1);
     q.enQueue(10);
     q.enQueue(20);
     q.enQueue(30);
