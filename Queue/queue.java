@@ -177,38 +177,4 @@ class dynamicQueue{
 }
 
 
-public class queue {
-    public static void main(String[] args) {
-        
-    //    queueLinkedList queue = new queueLinkedList();
-    //    queue.enQueue(10);
-    //    queue.enQueue(20);
-    //    queue.enQueue(30);
-    //    queue.enQueue(40);
-    //    queue.enQueue(50);
-    //    queue.displayQueue();
-    //    queue.deQueue();
-    //    queue.deQueue();
-    //    queue.enQueue(45);
-    //    System.out.println(queue.peek());
 
-    //    queue.displayQueue();
-
-    dynamicQueue q = new dynamicQueue(1);
-    q.enQueue(10);
-    q.enQueue(20);
-    q.enQueue(30);
-    q.enQueue(40);
-    q.deQueue();
-    q.deQueue();
-    q.deQueue();
-    q.deQueue();
-    q.enQueue(50);
-    q.enQueue(60);
-
-    q.displayQueue();
-    System.out.println(q.isEmpty());
-
-
-    }
-}

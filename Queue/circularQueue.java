@@ -1,15 +1,13 @@
 package Queue;
 
-
-
 public class circularQueue {
 
-    int front=0;
-    int end=0;
+     int front=0;
+     int end=0;
     int []arr;
 
-    circularQueue(int size){
-        arr=new int[size];
+    circularQueue(int initialSize){
+        arr=new int[initialSize];
         for (int i = 0; i < arr.length; i++) {
             arr[i]=Integer.MIN_VALUE;
         }
@@ -23,6 +21,7 @@ public class circularQueue {
         }
 
         arr[end++]=num;
+        end=(end%arr.length);
 
     }
 
@@ -35,33 +34,66 @@ public class circularQueue {
 
         int temp = arr[front];
         arr[front++]=Integer.MIN_VALUE;
-
+        front=front%arr.length;
         return temp;
 
     }
 
+    int peek(){
+        if (isQueueEmpty()) {
+            System.out.println("ERROR! Queue is Empty");
+            return Integer.MIN_VALUE;
+        }
+
+        return arr[front];
+    }
+
     boolean isQueueFull(){
 
-        setFront();
-        setEnd();
         return(front==end && arr[front]!=Integer.MIN_VALUE && arr[end]!=Integer.MIN_VALUE);
 
     }
 
     boolean isQueueEmpty(){
 
-        setFront();
-        setEnd();
         return(front==end && arr[front]==Integer.MIN_VALUE && arr[end]==Integer.MIN_VALUE);
 
     }
 
-    private void setFront(){
-        front=(front%arr.length);
+
+
+}
+
+class dynamicCircularQueue extends circularQueue{
+
+    dynamicCircularQueue(int initialSize){
+        super(initialSize);
     }
 
-    private void setEnd(){
+    @Override
+    void enqueue(int num) {
+
+        if (isQueueFull()) {
+
+            int [] temp = new int[arr.length*2];
+            
+            for (int i = 0; i < arr.length; i++) {
+                temp[i]=arr[(i+front)%arr.length];
+            }
+            for(int i=arr.length;i<temp.length;i++){
+                temp[i]=Integer.MIN_VALUE;
+            }
+
+            front=0;
+            end=arr.length;
+            arr=temp;
+
+        }
+
+        arr[end++]=num;
         end=(end%arr.length);
+
+        
     }
-   
+
 }

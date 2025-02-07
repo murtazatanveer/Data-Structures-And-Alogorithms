@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "gameingHub",
+      "request": "launch",
+      "mainClass": "Lab_Final_PROJECT.gameingHub",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
+      "name": "JokerGame",
+      "request": "launch",
+      "mainClass": "Lab_Final_PROJECT.JokerGame",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
       "name": "Minimum_Spanning_Tree",
       "request": "launch",
       "mainClass": "Graphs.Minimum_Spanning_Tree",

@@ -9,6 +9,7 @@ public class heap {
 
     heap(){
         list.add(null);
+        
     }
 
     class node{
