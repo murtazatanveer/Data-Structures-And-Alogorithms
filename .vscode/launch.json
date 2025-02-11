@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "queueLeetcodeProblems",
+      "request": "launch",
+      "mainClass": "Queue.queueLeetcodeProblems",
+      "projectName": "Data-Structures-And-Alogorithms-3_8ddaf7cb"
+    },
+    {
+      "type": "java",
       "name": "gameingHub",
       "request": "launch",
       "mainClass": "Lab_Final_PROJECT.gameingHub",

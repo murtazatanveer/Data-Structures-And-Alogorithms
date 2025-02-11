@@ -148,35 +148,3 @@ class stackLinkedList{
 
 }
 
-public class stack {
-  public static void main(String[] args) {
-
-    // dynamicStackArray stack = new dynamicStackArray(1);
-    // stack.push(10);
-    // stack.push(20);
-    // stack.push(30);
-    // stack.push(40);
-    // stack.push(60);
-    // stack.push(70);
-
-    // stack.pop();
-    // stack.pop();
-
-    // stack.displayStack();
-
-//     stackLinkedList stack2 = new stackLinkedList();
-//     stack2.push(10);
-//     stack2.push(20);
-//     stack2.push(30);
-//     stack2.push(40);
-//     stack2.push(50);
-//     stack2.push(60);
-//     stack2.push(70);
-
-//   stack2.push(stack2.pop().data+stack2.pop().data+stack2.peek().data);
-//   System.out.println(stack2.peek());
-// stack2.push(stack2.pop().data+stack2.pop().data);
-
-//    stack2.displayStack();
-  }
-}
