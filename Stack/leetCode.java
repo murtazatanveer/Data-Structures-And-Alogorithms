@@ -317,11 +317,117 @@ s[i] is '(', or ')'. */
 // incomplete
 
 
+/* 921. Minimum Add to Make Parentheses Valid
+Medium
+Topics
+Companies
+A parentheses string is valid if and only if:
+
+It is the empty string,
+It can be written as AB (A concatenated with B), where A and B are valid strings, or
+It can be written as (A), where A is a valid string.
+You are given a parentheses string s. In one move, you can insert a parenthesis at any position of the string.
+
+For example, if s = "()))", you can insert an opening parenthesis to be "(()))" or a closing parenthesis to be "())))".
+Return the minimum number of moves required to make s valid.
+
+ 
+
+Example 1:
+
+Input: s = "())"
+Output: 1
+Example 2:
+
+Input: s = "((("
+Output: 3
+ 
+
+Constraints:
+
+1 <= s.length <= 1000
+s[i] is either '(' or ')'. */
+
+public int minAddToMakeValid(String s) {
+    
+    if (s.length()==1) {
+        return 1;
+    }
+    
+    Stack<Character> charStack = new Stack<>();
+
+    for (int i = 0; i < s.length(); i++) {
+        
+        if (!charStack.isEmpty() && (s.charAt(i)==')' && charStack.peek()=='(')) {
+
+            charStack.pop();
+
+        }else{
+            charStack.push(s.charAt(i));
+        }
+    }
+    return charStack.size();
+}
+
+
+/* 2390. Removing Stars From a String
+Medium
+Topics
+Companies
+Hint
+You are given a string s, which contains stars *.
+
+In one operation, you can:
+
+Choose a star in s.
+Remove the closest non-star character to its left, as well as remove the star itself.
+Return the string after all stars have been removed.
+
+Note:
+
+The input will be generated such that the operation is always possible.
+It can be shown that the resulting string will always be unique.
+ 
+
+Example 1:
+
+Input: s = "leet**cod*e"
+Output: "lecoe"
+Explanation: Performing the removals from left to right:
+- The closest character to the 1st star is 't' in "leet**cod*e". s becomes "lee*cod*e".
+- The closest character to the 2nd star is 'e' in "lee*cod*e". s becomes "lecod*e".
+- The closest character to the 3rd star is 'd' in "lecod*e". s becomes "lecoe".
+There are no more stars, so we return "lecoe".
+Example 2:
+
+Input: s = "erase*****"
+Output: ""
+Explanation: The entire string is removed, so we return an empty string. */
+
+public String removeStars(String s) {
+    
+    Stack<Character> st = new Stack<>();
+
+    for (int i = 0; i < s.length(); i++) {
+        if (s.charAt(i)=='*') {
+            st.pop();
+        }else{
+            st.push(s.charAt(i));
+        }
+    }
+    
+    int stackSize=st.size();
+    char [] chrs = new char[stackSize];
+
+    for (int i = stackSize-1; i >= 0; i--) {
+        chrs[i]=st.pop();
+    }
+    return new String(chrs);
+}
+
 public static void main(String[] args) {
     leetCode ob = new leetCode();
-    
-    //System.out.println(ob.longestValidParentheses("())"));
-
+    System.out.println(ob.removeStars("leet**cod*e"));
 }
 
 }
