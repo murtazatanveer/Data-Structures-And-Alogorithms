@@ -1,8 +1,6 @@
  package Trees;
 import java.util.*;
 
-import javax.swing.tree.TreeNode;
-
 class node{
 
     node left;
