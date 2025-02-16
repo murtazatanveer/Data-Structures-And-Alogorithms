@@ -1,6 +1,5 @@
 package Trees;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class TreesLeetcode {
@@ -8,8 +7,9 @@ public class TreesLeetcode {
   
  // Leetcode Problem No 102.
  //Binary Tree Level Order Traversal
- // Definition for a binary tree node.
 
+
+ // Definition for a binary tree node.
   public class TreeNode {
       int val;
       TreeNode left;
@@ -53,7 +53,7 @@ public class TreesLeetcode {
                 }
 
             }
-            list.add(currList);
+            list.add(0,currList);
         }    
        return list;
     }
@@ -196,6 +196,203 @@ public class TreesLeetcode {
                     list.add(currList);
                 }
                 return list;
+    }
+
+    //Leet Code Problem 199. Binary Tree Right Side View
+
+    public List<Integer> rightSideView(TreeNode root) {
+        
+        List<Integer> list = new ArrayList<>();
+
+        if (root==null) {
+            return list;
+        }
+
+        Queue<TreeNode> q = new LinkedList<>();
+
+        q.add(root);
+
+        while (!q.isEmpty()) {
+
+            int size = q.size();
+            TreeNode removed=null;
+
+            for (int i = 1; i <= size; i++) {
+
+                removed=q.remove();
+
+                if (removed.left!=null) {
+                    q.add(removed.left);
+                } 
+                if(removed.right!=null){
+                    q.add(removed.right);
+                }
+            }
+
+            list.add(removed.val);
+            
+        }
+        return list;
+    }    
+
+    // Leetcode Problem No 993. Cousins in Binary Tree
+
+    public boolean isCousins(TreeNode root, int x, int y) {
+
+        if (root==null) {
+            return false;
+        }
+
+        Queue<TreeNode> q = new LinkedList<>();
+
+        q.add(root);
+        boolean findX = false , findY = false;
+
+        while (!q.isEmpty()) {
+
+            int size = q.size();
+
+            for (int i = 1; i <= size; i++) {
+
+                TreeNode removed = q.remove();
+            
+                if (removed.left!=null) {
+                    q.add(removed.left);
+                } 
+                if (removed.right!=null) {
+                    q.add(removed.right);
+                }
+
+                if ((removed.left!=null && removed.right!=null) && ((removed.left.val== x && removed.right.val==y) ||
+                (removed.left.val==y && removed.right.val==x))) {
+                    return false;
+                }
+                
+                if (removed.val==x) {
+                    findX=true;
+                }
+
+                if (removed.val==y) {
+                    findY=true;
+                }
+
+            }
+
+            if (findX!=findY) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /* Leetcode Problem No 101. Symmetric Tree
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center). */
+
+    public boolean isSymmetric(TreeNode root) {
+
+        if ((root==null) || (root!=null && (root.left==null&&root.right==null))) {
+            return true;
+        }
+
+        Queue<TreeNode> q = new LinkedList<>();
+
+        if (root.left!=null) {
+            q.add(root.left);
+        }else{
+            return false;
+        }
+
+        if(root.right!=null){
+            q.add(root.right);
+        }else{
+            return false;
+        }
+
+        while (!q.isEmpty()) {
+
+            int size = q.size();
+            TreeNode removed=null;
+
+            if (size<2) {
+                return false;
+            }
+
+            Stack<Integer> nums = new Stack<>();
+            Stack<Character> chars = new Stack<>();
+
+            for (int i = 1; i <= size/2; i++) {
+
+                removed=q.remove();
+                nums.push(removed.val);
+
+                if (removed.left!=null) {
+                    q.add(removed.left);
+                    chars.push('l');
+                }else{
+                    chars.push(' ');
+                }
+
+                if(removed.right!=null){
+                    q.add(removed.right);
+                    chars.push('r');
+
+                }else{
+                    chars.push(' ');
+
+                }
+                
+            }
+
+            for (int i = 1; i <= size/2; i++) {
+
+                removed=q.remove();
+
+                if (removed.val==nums.peek()) {
+                    nums.pop();
+                }else{
+                    return false;
+                }
+
+                if (removed.left!=null) {
+                    q.add(removed.left);
+                    char c = chars.peek();
+                    if (c=='r' && c!='l') {
+                        chars.pop();
+                    }else{
+                        return false;
+                    }
+
+                }else{
+                    if (chars.peek()==' ') {
+                        chars.pop();
+                    }
+                    else{
+                        return false;
+                    }
+                }
+
+                if(removed.right!=null){
+                    q.add(removed.right);
+                    char c = chars.peek();
+                    if (c=='l' && c!='r') {
+                        chars.pop();
+                    }else{
+                        return false;
+                    }
+                }else{
+                    if (chars.peek()==' ') {
+                        chars.pop();
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                
+            }
+      
+            
+        }
+        return true;
     }
 
 }

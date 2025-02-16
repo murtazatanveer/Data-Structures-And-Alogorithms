@@ -256,7 +256,6 @@ private node find(int index , boolean isMoveHead , int size){
 
  }
 
- 
    
 }
  
