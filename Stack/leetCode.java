@@ -125,74 +125,43 @@ Follow up: Could you do it in O(n) time and O(1) space? */
  
   boolean isPalindrome(ListNode head) {
 
-    int size = size(head);
-
-    if (size==1) {
+   if (head.next==null) {
         return true;
-    }
+   }
 
-    Stack<Integer> stack = new Stack<>();
-    ListNode move = head;
+   Stack<ListNode> st = new Stack<>();
 
-    if (size%2==0) {
-        for (int i = 1; i <= size; i++) {
-            if (i<=(size/2)){
-                stack.push(move.val);
-                move=move.next;
-            }else{
-                if (move.val==stack.peek()) {
-                    stack.pop();
-                    move=move.next;
-                }else{
-                    return false;
-                }
-            }
+   ListNode fast = head;
+   ListNode slow = head;
+
+   while (fast.next!=null) {
+
+    st.push(slow); 
+
+       if (fast.next.next!=null) {
+           fast=fast.next.next;                   
+       }else{
+            break;
+       }
+
+       slow=slow.next;     
+   }
+
+   while (slow.next!=null) {
+        slow=slow.next;
+        if (slow.val==st.peek().val) {
+            st.pop();
         }
-        if (stack.isEmpty()) {
-            return true;
+        else{
+            return false;
         }
-        return false;
-    }else{
+   }
 
-        for (int i = 1; i <= size; i++) {
-
-            if (i==(size/2)+1) {
-                move=move.next;
-                continue;
-            }
-
-            if (i<=(size/2)){
-                stack.push(move.val);
-                move=move.next;
-            }else{
-                if (move.val==stack.peek()) {
-                    stack.pop();
-                    move=move.next;
-                }else{
-                    return false;
-                }
-            }
-        }
-
-        if (stack.isEmpty()) {
-            return true;
-        }
-        return false;
-    }
+   return st.isEmpty() ? true : false;
 
 }
 
-private int size(ListNode head){
- 
-    ListNode move = head;
-    int count=0;
 
-    while (move!=null) {
-        move=move.next;
-        count++;
-    }
-    return count;
-}
 
 /* Infix Notataion to PostFix Notation */
 
