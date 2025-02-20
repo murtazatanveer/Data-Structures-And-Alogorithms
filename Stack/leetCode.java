@@ -425,8 +425,145 @@ class MyStack {
  */
 
 public static void main(String[] args) {
-    leetCode ob = new leetCode();
-    System.out.println(ob.removeStars("leet**cod*e"));
+    TextEditor textEditor = new TextEditor();
+    textEditor.addText("leetcode");
+    textEditor.deleteText(4);
+    textEditor.addText("practice");
+    textEditor.cursorRight(3);
+    textEditor.cursorLeft(8);
+    // textEditor.deleteText(10);
+    // textEditor.cursorLeft(2);
+    // textEditor.cursorRight(6);
 }
 
 }
+
+// Leetcode Problem No 155. Min Stack
+
+
+class MinStack {
+
+    Stack<Integer> st;
+
+    public MinStack() {
+        st=new Stack<>();
+     
+    }
+    
+    public void push(int val) {
+        
+            st.push(val);
+    }
+    
+    public void pop() {
+        st.pop();
+    }
+    
+    public int top() {
+        return st.peek();
+    }
+    
+    public int getMin() {
+
+        int min=st.get(0);
+
+        for (int i = 1; i < st.size(); i++) {
+            if (st.get(i)<=min) {
+                min=st.get(i);
+            }
+        }
+        return min;
+        
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+
+
+ // Leetcode Problem No 2296. Design a Text Editor
+
+ class TextEditor {
+
+    Stack<Character> left;
+    Stack<Character> right;
+
+    public TextEditor() {
+        left=new Stack<>();
+        right=new Stack<>();
+    }
+    
+    public void addText(String text) {
+        for (Character ch : text.toCharArray()) {
+            left.push(ch);
+        }
+    }
+    
+    public int deleteText(int k) {
+
+        int count=0;
+        if (left.isEmpty()) {
+            return count;
+        }
+
+        for (int i = 1; i <= k && !left.isEmpty(); i++) {
+            left.pop();
+            count++;
+        }
+
+        return count;
+    }
+    
+    public String cursorLeft(int k) {
+
+        if (left.isEmpty()) {
+            return "";
+        }
+
+        for(int i=1;i<=k && !left.isEmpty();i++){
+            right.push(left.pop());
+        }
+
+        return getLast10();
+
+    }
+    
+    public String cursorRight(int k) {
+        if (right.isEmpty()) {
+            return getLast10();
+        }
+
+        for(int i=1;i<=k && !right.isEmpty();i++){
+            left.push(right.pop());
+        }
+        return getLast10();
+    }
+
+    private String getLast10(){
+
+        String res="";
+        int index = left.size()-1;
+
+        for (int i = 0; i < 10 && index>=0; i++) {
+            res = (left.get(index)+"")+res;
+            index--;
+        };
+        return res;
+    }
+}
+
+
+/**
+ * Your TextEditor object will be instantiated and called as such:
+ * TextEditor obj = new TextEditor();
+ * obj.addText(text);
+ * int param_2 = obj.deleteText(k);
+ * String param_3 = obj.cursorLeft(k);
+ * String param_4 = obj.cursorRight(k);
+ */
