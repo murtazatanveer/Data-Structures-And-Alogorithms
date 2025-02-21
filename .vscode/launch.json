@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Bubble_Sort",
+      "request": "launch",
+      "mainClass": "Bubble_Sort",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
+      "name": "recursion",
+      "request": "launch",
+      "mainClass": "Recursion.recursion",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
       "name": "queueLeetcodeProblems",
       "request": "launch",
       "mainClass": "Queue.queueLeetcodeProblems",
