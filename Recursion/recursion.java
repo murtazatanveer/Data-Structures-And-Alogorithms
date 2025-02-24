@@ -1,25 +1,29 @@
 package Recursion;
-import java.util.*;
+
+import java.util.ArrayList;
 
 public class recursion {
     public static void main(String[] args) {
         recursion ob = new recursion();
 
-        System.out.println(ob.BinarySearch(new int[]{5,10,15,20,25,30,35,40,45,50}, 0, 9, 20));
+    //     System.out.println(ob.BinarySearch(new int[]{5,10,15,20,25,30,35,40,45,50}, 0, 9, 20));
 
-        int []arr = {20,40,25,50,5,35,15,45,10,30};
+         int []arr = {20,40,25,50,5,20,35,15,20,45,10,30};
 
-        ob.bubbleSort(arr, 9);
-      System.out.println(Arrays.toString(arr));
+    //     ob.bubbleSort(arr, 9);
+    //   System.out.println(Arrays.toString(arr));
 
-      System.out.println(ob.reverseNumber(12345,0));
-      System.out.println(ob.sumFromStartToEnd(5, 100));
-      System.out.println(ob.productFromStartToEnd(5, 10));
-      System.out.println(ob.sumOfDigits(12345));
-      System.out.println(ob.productOfDigits(12345));
-      System.out.println(ob.isPalindrome(new int[]{1,5,9,9,5,1}, 0, 5));
+    //   System.out.println(ob.reverseNumber(12345,0));
+    //   System.out.println(ob.sumFromStartToEnd(5, 100));
+    //   System.out.println(ob.productFromStartToEnd(5, 10));
+    //   System.out.println(ob.sumOfDigits(12345));
+    //   System.out.println(ob.productOfDigits(12345));
+    //   System.out.println(ob.isPalindrome(new int[]{1,5,9,9,5,1}, 0, 5));
 
-    System.out.println(ob.countZeros(905600200, 0));
+    // System.out.println(ob.countZeros(905600200, 0));
+    //System.out.println(ob.isArraySorted(new int[] {1}, 0, 0));
+    //System.out.println(ob.linearSearch(arr, 4, 0));
+    System.out.println(ob.multipleOccurrencesLinearSearch(arr, 30));
 
     }
 
@@ -137,4 +141,74 @@ public class recursion {
         return num%10==0 ? countZeros(num/10, count+1) : countZeros(num/10, count);
 
      }
+
+     // Leetcode Problem No 1342. Number of Steps to Reduce a Number to Zero
+
+     public int numberOfSteps(int num) {
+        return helperNumberOfSteps(num, 0);
+     }
+
+     private int helperNumberOfSteps(int num , int count){
+
+        if (num==0) {
+            return count;
+        }
+
+        return num%2==0 ?  helperNumberOfSteps(num/2, count+1) : helperNumberOfSteps(num-1, count+1);
+
+     }
+
+
+     // Check if the array is sorted in assending order or not
+
+     boolean isArraySorted(int [] arr , int start , int end){
+
+        if (start>end || arr.length==1) {
+            return true;
+        }
+
+        if (arr[start+1]>=arr[start] && arr[end]>=arr[end-1]) {
+            return isArraySorted(arr, start+1, end-1);
+        }
+        
+        return false;
+     }
+
+     // Linear Search 
+
+     int linearSearch(int arr[] , int target , int index){
+
+        if (index==arr.length) {
+            return -1;
+        }
+
+        if (arr[index]==target) {
+            return index;
+        }
+
+        return linearSearch(arr, target, index+1);
+
+     }
+
+     ArrayList<Integer> multipleOccurrencesLinearSearch(int []arr , int target){
+
+        ArrayList<Integer> list = new ArrayList<>();
+        return helperLinearSearch(arr , target , 0 , list);
+     }
+
+     private ArrayList<Integer> helperLinearSearch(int [] arr , int target , int index , ArrayList<Integer> list){
+
+        if (index==arr.length) {
+            return list;
+        }
+
+        if (arr[index]==target) {
+            list.add(index);
+        }
+
+        return helperLinearSearch(arr, target, index+1, list);
+
+     }
+
+     
 }
