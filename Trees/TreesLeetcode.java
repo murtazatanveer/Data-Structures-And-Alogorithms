@@ -421,5 +421,29 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
         return ++right;
     }
 
+    // Leetcode Problem No 543 : Diameter of Binary Tree
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        int max [] = new int[1];
+         diameter(root , max);
+         return max[0];
+    }
+
+    private int diameter(TreeNode root , int [] max){
+
+        if (root==null) return 0;
+        
+        int left = diameter(root.left , max);
+            
+        int right = diameter(root.right , max);
+
+        max[0]=Math.max(max[0],left+right);
+
+       return Math.max(left, right)+1;
+
+    }
+
+    
+
 }
 

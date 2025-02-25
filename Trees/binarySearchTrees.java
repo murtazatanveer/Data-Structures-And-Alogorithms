@@ -352,16 +352,34 @@ public class binarySearchTrees {
 
      void inorderTraveralUsingRecursion(node root){
 
-       if (root==null) {
-        return;
-       }
-     
+       if (root==null) return;
+            
        inorderTraveralUsingRecursion(root.left);
-       System.out.print(root.data+" ");
+       System.out.print(" "+root.data+" -->");
        inorderTraveralUsingRecursion(root.right);
 
      }
 
+     void postOrderTraversalUsingRecursion(node root){
+
+        if (root==null) return;
+
+        postOrderTraversalUsingRecursion(root.left);
+        postOrderTraversalUsingRecursion(root.right);
+        System.out.print(" "+root.data+" -->");
+
+     }
+
+
+     void preorderTraversalUsingRecursion(node root){
+
+        if (root==null) return;
+          
+        System.out.print(" "+root.data+" -->");
+        preorderTraversalUsingRecursion(root.left);
+        preorderTraversalUsingRecursion(root.right);
+        
+     }
 
 
     public static void main(String[] args) {
@@ -383,35 +401,14 @@ public class binarySearchTrees {
         tree.insert(80);
         tree.insert(87);
 
-      // tree.inorderTraveralUsingRecursion(tree.root);
+    //   tree.inorderTraversal();
+    //   tree.inorderTraveralUsingRecursion(tree.root);
 
-         //tree.levelOrderTraversal();
-        // // tree.preorderTraversal();
-        // tree.postorderTraversal();
-        // tree.inorderTraversal();
-        // System.out.println("\n"+tree.delete(13));
-   
-        // tree.inorderTraversal();
+    //   tree.postorderTraversal();
+    //   tree.postOrderTraversalUsingRecursion(tree.root);
 
-        // System.out.println(tree.minNode().data);
-        // System.out.println(tree.maxNode().data);
-
-        // System.out.println(tree.isExist(88));
-
-        // ArrayList<node> list = new ArrayList<>();
-        // list.add(new node(10));
-        // list.add(new node(20));
-        // list.add(new node(30));
-        // list.add(new node(40));
-        // list.add(new node(50));
-        // list.add(new node(60));
-        // list.add(new node(70));
-        // list.add(new node(80));
-
-
-        // node root = tree.HeapTree(list);
-
-        // tree.levelOrderTraversal(root);
+    tree.preorderTraversal();
+    tree.preorderTraversalUsingRecursion(tree.root);
 
     }
 }
