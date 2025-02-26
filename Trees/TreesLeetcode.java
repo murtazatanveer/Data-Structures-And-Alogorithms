@@ -396,7 +396,7 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
     }
 
     // Leetcode Problem No 110. Balanced Binary Tree
-    public boolean isBalanced(TreeNode root) {
+    public boolean isBalanced(TreeNode root) { // Post Order Traversal (Left-Right-Node)
         return checkBalance(root)!=-1;
     }
 
@@ -423,7 +423,7 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
 
     // Leetcode Problem No 543 : Diameter of Binary Tree
 
-    public int diameterOfBinaryTree(TreeNode root) {
+    public int diameterOfBinaryTree(TreeNode root) { // Post Order Traversal (Left-Right-Node)
         int max [] = new int[1];
          diameter(root , max);
          return max[0];
@@ -443,7 +443,39 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
 
     }
 
-    
+    // Leetcode Problem No 226 : Invert Binary Tree
+    public TreeNode invertTree(TreeNode root) { // Post Order Traversal (Left-Right-Node)
+        invert(root);
+        return root;
+    }
+
+    private void invert(TreeNode root){
+
+        if (root==null) return;
+        
+        invert(root.left);
+        invert(root.right);
+
+        TreeNode temp = root.left;
+        root.left=root.right;
+        root.right=temp;
+        
+    }
+
+    // Leetcode Problem No 104 : Maximum Depth of Binary Tree
+    public int maxDepth(TreeNode root) { // Post Order Traversal (Left-Right-Node)
+        
+        if (root==null) return 0;
+        
+        int left = maxDepth(root.left);
+            
+        int right = maxDepth(root.right);
+
+       return Math.max(left, right)+1;
+
+    }
+
+ 
 
 }
 
