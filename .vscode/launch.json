@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TreesLeetcode",
+      "request": "launch",
+      "mainClass": "Trees.TreesLeetcode",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
       "name": "Bubble_Sort",
       "request": "launch",
       "mainClass": "Bubble_Sort",

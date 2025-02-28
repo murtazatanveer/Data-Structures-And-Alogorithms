@@ -2,27 +2,24 @@ package Trees;
 
 import java.util.*;
 
+ // Definition for a binary tree node.
+  class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+       this.right = right;
+    }
+}
 public class TreesLeetcode {
 
   
  // Leetcode Problem No 102.
  //Binary Tree Level Order Traversal
-
-
- // Definition for a binary tree node.
-  public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-         this.right = right;
-      }
- }
- 
     public List<List<Integer>> levelOrder(TreeNode root) {
         
         List<List<Integer>> list = new ArrayList<>();
@@ -475,7 +472,77 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
 
     }
 
- 
+    // Leeetcode Problem No 236 : Lowest Common Ancestor of a Binary Tree
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+
+        if (root==null || root==p || root==q) {
+            return root;
+        }
+
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+
+        if (left!=null && right!=null) return root; 
+            
+        return right!=null ? right : left;
+
+    }
+
+    // Leetcode Problem No 230 : Kth Smallest Element in a BST
+
+    
+        
+        public int kthSmallest(TreeNode root, int k) {
+
+            int [] count = new int[1];
+        int [] ans = new int[1];
+        inorder(root, k, count , ans);
+        return ans[0];
+
+        }
+    
+        private void inorder(TreeNode root, int k , int count[] , int ans[]) {
+            if (root == null || count[0]>k) return;
+    
+            inorder(root.left, k, count, ans);
+    
+            count[0]++;
+            if (count[0] == k) {
+                ans[0] = root.val;
+                return;
+            }
+    
+            inorder(root.right, k, count, ans);
+        }
+    
+
+    // leetcode Problem No 112: Path Sum 
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+
+        targetSum=Math.abs(targetSum);
+        return sum(root, targetSum, new int[1]);
+
+}
+
+    private boolean sum(TreeNode root, int targetSum,int sum[]){
+
+        if (root==null) return false;
+
+        sum[0]+=root.val;
+
+        if (sum[0]==targetSum && root.left==null && root.right==null) return true;
+
+         boolean left = sum(root.left, targetSum, sum);
+         boolean right = sum(root.right, targetSum, sum);
+      
+            if (!left&&!right){
+             sum[0]-=root.val;
+             return false;
+        }
+      
+        return true;
+
+}
 
 }
 
