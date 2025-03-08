@@ -400,6 +400,10 @@ public class binarySearchTrees {
         tree.insert(90);
         tree.insert(80);
         tree.insert(87);
+        tree.inorderTraversal();
+
+        tree.delete(30);
+        tree.inorderTraversal();
 
     //   tree.inorderTraversal();
     //   tree.inorderTraveralUsingRecursion(tree.root);
@@ -407,8 +411,8 @@ public class binarySearchTrees {
     //   tree.postorderTraversal();
     //   tree.postOrderTraversalUsingRecursion(tree.root);
 
-    tree.preorderTraversal();
-    tree.preorderTraversalUsingRecursion(tree.root);
+    //tree.preorderTraversal();
+    //tree.preorderTraversalUsingRecursion(tree.root);
 
     }
 }

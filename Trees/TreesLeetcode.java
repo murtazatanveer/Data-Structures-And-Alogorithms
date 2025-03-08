@@ -94,6 +94,66 @@ public class TreesLeetcode {
        return list;
     }
 
+    // Leetcode Problem No 100 : Same Tree
+
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        
+        Queue<TreeNode> q1 = new LinkedList<>(); 
+        Queue<TreeNode> q2 = new LinkedList<>();
+        
+        if (p!=null) {
+            q1.add(p);
+        }
+
+        if (q!=null) {
+            q2.add(q);
+        }
+        
+        while(!q1.isEmpty()||!q2.isEmpty()){
+
+            if (q1.size()!=q2.size()) {
+                return false;
+            }
+
+            TreeNode r1 = q1.remove();
+            TreeNode r2 = q2.remove();
+
+            boolean r1Right=false;
+            boolean r1Left=false;
+            boolean r2Left=false;
+            boolean r2Right=false;
+
+            if (r1.val!=r2.val) {
+                return false;
+            }
+            
+            if (r1.left!=null) {
+                q1.add(r1.left);
+                r1Left = true;
+            }
+
+            if (r1.right!=null) {
+                q1.add(r1.right);
+                r1Right=true;
+            }
+
+            if (r2.left!=null) {
+                q2.add(r2.left);
+                r2Left=true;
+            }
+
+            if (r2.right!=null) {
+                q2.add(r2.right);
+                r2Right=true;
+            }
+            
+            if (r1Left != r2Left || r1Right != r2Right) return false;
+                                 
+        } 
+        return true;
+    }
+
+    
     // Google Interview Question
     // Level-Order Successor of a node
 
@@ -392,6 +452,64 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
         return true;
     }
 
+    // Leetcode Problem No 116. Populating Next Right Pointers in Each Node
+   
+        class Node {
+            public int val;
+            public Node left;
+            public Node right;
+            public Node next;
+        
+            public Node() {}
+            
+            public Node(int _val) {
+                val = _val;
+            }
+        
+            public Node(int _val, Node _left, Node _right, Node _next) {
+                val = _val;
+                left = _left;
+                right = _right;
+                next = _next;
+            }
+        }
+
+        public Node connect(Node root) {
+          
+            if (root==null) {
+                return root;
+            }
+    
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            while (!q.isEmpty()) {
+    
+                int size = q.size();
+                Node removed = null;
+                Node prev=null;
+                Node curr=null;
+
+                for (int i = 1; i <= size; i++) {
+    
+                     removed = q.remove();
+                    prev=curr;
+                    if (prev!=null) prev.next=removed;
+                    curr=removed;
+                    
+                    if (removed.left!=null) {
+                        q.add(removed.left);
+                    } 
+                    if (removed.right!=null) {
+                        q.add(removed.right);
+                    }
+    
+                }
+                removed.next=null;
+            }    
+          return root;
+        }
+    
+
     // Leetcode Problem No 110. Balanced Binary Tree
     public boolean isBalanced(TreeNode root) { // Post Order Traversal (Left-Right-Node)
         return checkBalance(root)!=-1;
@@ -472,6 +590,24 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
 
     }
 
+     // Leetcode Problem No 111 : Minimum Depth of Binary Tree
+
+     public int minDepth(TreeNode root) {
+        
+        if (root==null) return 0;
+        
+        int left = minDepth(root.left);
+            
+        int right = minDepth(root.right);
+
+        if ((left!=0&&right!=0) || (left==0&&right==0)) return Math.min(left, right);
+
+        if (left!=0) return left+1; 
+
+        return right+1;
+        
+     }
+
     // Leeetcode Problem No 236 : Lowest Common Ancestor of a Binary Tree
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 
@@ -489,8 +625,6 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
     }
 
     // Leetcode Problem No 230 : Kth Smallest Element in a BST
-
-    
         
         public int kthSmallest(TreeNode root, int k) {
 
@@ -544,5 +678,76 @@ Given the root of a binary tree, check whether it is a mirror of itself (i.e., s
 
 }
 
+// Leetcode Problem No 129 : Sum Root to Leaf Numbers
+public int sumNumbers(TreeNode root) {
+
+        int totalSum[]=new int[1];
+        sum(root, totalSum,0);
+        return totalSum[0];
+}
+
+private void sum(TreeNode root , int [] totalSum , int digit){
+
+    if(root==null) return;
+
+    digit = (digit*10) + root.val;
+    sum(root.left, totalSum, digit);
+    sum(root.right, totalSum, digit);
+
+    if (root.left==null && root.right==null) totalSum[0]+=digit;
+        
+    }
+
+    // Leetcode Problem No 124 : Binary Tree Maximum Path Sum
+
+    static class Solution {
+
+        int max=Integer.MIN_VALUE;
+        public int maxPathSum(TreeNode root) {
+     
+            pathSum(root);
+            return max;
+        }
+
+        private int pathSum(TreeNode root){
+
+            if (root == null) return 0; 
+
+            int left = Math.max(0, pathSum(root.left));  
+            int right = Math.max(0, pathSum(root.right));
+
+            max = Math.max(max, left + right + root.val);
+
+            left+=root.val;
+            right+=root.val;         
+
+          if (left>=right && left>=root.val) {
+            return left;
+          }
+          if (right>=left && right>=root.val) {
+            return right;
+          }
+          return root.val;
+        }
+    }
+   
+    // Leetcode Problem No : 257. Binary Tree Paths
+    public List<String> binaryTreePaths(TreeNode root) {
+        
+        List<String> paths = new ArrayList<>();
+        treePaths(root,"", paths);
+        return paths;
+    }
+    private void treePaths(TreeNode root , String p , List<String> paths){
+
+        if(root==null) return;
+    
+        p+=root.val+"->";
+        treePaths(root.left,p,paths);
+        treePaths(root.right,p,paths);
+    
+        if (root.left==null && root.right==null) paths.add(p.substring(0, p.length() - 2));
+            
+        }
 }
 
