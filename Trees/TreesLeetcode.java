@@ -749,5 +749,55 @@ private void sum(TreeNode root , int [] totalSum , int digit){
         if (root.left==null && root.right==null) paths.add(p.substring(0, p.length() - 2));
             
         }
+
+    // Leetcode Problem No 98 : Validate Binary Search Tree
+    
+    public boolean isValidBST(TreeNode root) {
+        boolean flag[] = new boolean[1];
+        int index[] = new int[1];
+        flag[0]=true;
+        ArrayList<Integer> list = new ArrayList<>();
+        inorderTraversal(root, list, flag,index);
+        return flag[0];
+    }
+
+    private void inorderTraversal(TreeNode root , ArrayList<Integer> list , boolean [] flag , int index[]){
+
+        if (root==null || !flag[0]) return;
+
+        inorderTraversal(root.left, list, flag, index);
+
+        list.add(root.val);
+        
+
+        if(list.size()>1 && !(list.get(index[0])>list.get(index[0]-1)))flag[0] = false;
+
+        index[0]++;
+
+        inorderTraversal(root.right, list, flag, index);
+
+    }
+
+    // Leetcode Problem No 538 : Convert BST to Greater Tree
+
+    int sum = 0;
+    
+    public TreeNode convertBST(TreeNode root) {
+            
+        ReverseInorderTraversal(root);
+        return root;
+    }
+
+    private void ReverseInorderTraversal(TreeNode root){
+
+        if (root==null) return;
+
+        ReverseInorderTraversal(root.right);
+        sum+=root.val;
+        root.val=sum;
+        ReverseInorderTraversal(root.left);      
+        
+    }
+
 }
 
