@@ -2,6 +2,7 @@ package Trees;
 
 import java.util.*;
 
+
  // Definition for a binary tree node.
   class TreeNode {
     int val;
@@ -16,7 +17,6 @@ import java.util.*;
     }
 }
 public class TreesLeetcode {
-
   
  // Leetcode Problem No 102.
  //Binary Tree Level Order Traversal
@@ -153,7 +153,7 @@ public class TreesLeetcode {
         return true;
     }
 
-    
+
     // Google Interview Question
     // Level-Order Successor of a node
 
@@ -781,7 +781,7 @@ private void sum(TreeNode root , int [] totalSum , int digit){
     // Leetcode Problem No 538 : Convert BST to Greater Tree
 
     int sum = 0;
-    
+
     public TreeNode convertBST(TreeNode root) {
             
         ReverseInorderTraversal(root);
@@ -798,6 +798,239 @@ private void sum(TreeNode root , int [] totalSum , int digit){
         ReverseInorderTraversal(root.left);      
         
     }
+        
+    // Leetcode Problem No 404 : Sum of Left Leaves
+    int s=0;
+    public int sumOfLeftLeaves(TreeNode root) {
+        sumLeftLeaves(root);
+        return s;
+    }
 
+    private void sumLeftLeaves(TreeNode root){
+
+        if (root==null) return;
+            
+        if (root.left!=null && root.left.left==null && root.left.right==null) {
+            s+=root.left.val;
+        }
+
+        sumLeftLeaves(root.left);
+        sumLeftLeaves(root.right);
+    }
+
+    // Leetcode Problem No 173 : Binary Search Tree Iterator
+    class BSTIterator {
+
+        TreeNode root;
+        Stack<TreeNode> stack;
+
+        public BSTIterator(TreeNode root) {
+
+            this.root=root;
+            stack=new Stack<>();
+
+            while (root!=null) {
+                stack.push(root);
+                root=root.left;
+            }
+        }
+        
+        public int next() {
+            
+            TreeNode removed =  stack.pop();
+            update(removed.right);
+            return removed.val;
+        }
+        
+        public boolean hasNext() {
+            return !stack.isEmpty();
+        }
+        
+        private void update(TreeNode root){
+
+            if (root==null) return;
+                
+            while (root!=null) {
+                stack.push(root);
+                root=root.left;
+            }
+
+        }
+        
+    }
+    
+    /**
+     * Your BSTIterator object will be instantiated and called as such:
+     * BSTIterator obj = new BSTIterator(root);
+     * int param_1 = obj.next();
+     * boolean param_2 = obj.hasNext();
+     */
+
+
+     //Leetcode Problem No 297 : Serialize and Deserialize Binary Tree
+    //  public class Codec {
+
+    //     // Encodes a tree to a single string.
+    //     public String serialize(TreeNode root) {
+            
+    //         if(root==null) return "";
+
+    //         Queue<TreeNode> q = new LinkedList<>();
+    //         q.add(root);
+
+    //         String result="["+root.val+",";
+
+    //         while (!q.isEmpty()) {
+
+    //             TreeNode removed = q.remove();
+
+    //             if (removed.left!=null) {
+    //                 result+=removed.val+",";
+    //                 q.add(removed.left);
+    //             }else{
+    //                 result+="null,";
+    //             }
+
+    //             if (removed.right!=null) {
+    //                 result+=removed.val+",";
+    //                 q.add(removed.right);
+    //             }
+    //             else{
+    //                 result+="null,";
+    //             }
+                
+    //         }
+    //         return removeTrailingNulls(result) + "]";
+    //     }
+    
+    //     // Decodes your encoded data to tree.
+    //     public TreeNode deserialize(String data) {
+
+    //         if(data==null || data.isEmpty()) return null;
+
+    //         data = data.replace("[", "").replace("]", "").replace(",", " ");
+
+    //         String d = "";
+    //         int i=0;
+            
+
+    //         while(i<data.length() && ((data.charAt(i)>='0'&&data.charAt(i)<='9') || (data.charAt(i)=='-') )){
+    //             d+=data.charAt(i);
+    //             i++;
+    //         }
+
+    //         TreeNode root = new TreeNode(Integer.parseInt(d));
+    //         TreeNode ptr  = root;
+    //         int index=i+1;
+
+    //         while (index<data.length()) {
+    //             TreeNode 
+    //             if (data.charAt(index)>='a' && data.charAt(index)<='z') {
+                    
+    //             }
+    //         }
+    //         return root;
+    //     }
+
+    //     private  String removeTrailingNulls(String str) {
+    //         return str.replaceAll("(,null)*$", ""); // Removes trailing ",null"
+    //     }
+    // } // Incomplete
+
+    // Leetcode Problem No 113 : Path Sum II.
+    List<List<Integer>> paths = new ArrayList<>();
+
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        sum2(root, targetSum, new ArrayList<>());
+        return paths;
+    }
+
+    private void sum2(TreeNode root, int targetSum,List<Integer> list){
+
+        if (root==null) return;
+ 
+        targetSum-=root.val;
+        list.add(root.val);
+
+         if (targetSum==0 && root.left==null && root.right==null) {
+
+            ArrayList<Integer> temp = new ArrayList<>();
+            temp.addAll(list);
+            paths.add(temp);
+        
+        }
+        else{
+          sum2(root.left, targetSum, list);
+          sum2(root.right, targetSum, list);
+        }
+                  
+              list.remove(list.size()-1);
+  
+     }
+
+     // Leetcode Problem No 2331 : Evaluate Boolean Binary Tree
+     public boolean evaluateTree(TreeNode root) {
+        return checkTree(root)==1 ? true : false;
+     }
+
+     private int checkTree(TreeNode root){
+
+        if (root.left==null && root.right==null) return root.val;
+
+        int left = checkTree(root.left);
+        int right = checkTree(root.right);
+
+        if (left==1 && right==1) return 1;
+        if (left==0 && right==0) return 0;
+       
+        return root.val==2 ? 1 : 0;
+        
+     }
+    
+     // Leetcode Problem No 222. Count Complete Tree Nodes
+     int counter = 0;
+     public int countNodes(TreeNode root) {
+        traversal(root);
+        return counter;
+     }
+
+     void traversal(TreeNode root){ // Postorder Traversal
+        if(root==null) return;
+        traversal(root.left);
+        traversal(root.right);
+        counter++;
+     }
+
+     // Leetcode Problem No : 99 Recover Binary Search Tree
+
+        TreeNode first = null , second =null , prev = null;
+
+      public void recoverTree(TreeNode root) {
+
+        recover(root);
+        int temp = first.val;
+        first.val=second.val;
+        second.val=temp;
+
+     }
+     private void recover(TreeNode root){
+
+        if (root == null) return;
+
+        recover(root.left);
+
+        
+        if (prev != null && root.val < prev.val) {
+            if (first == null) {
+                first = prev;  
+            }
+            second = root;  
+        }
+
+        prev = root; 
+        recover(root.right);
+    } 
+
+   
 }
 

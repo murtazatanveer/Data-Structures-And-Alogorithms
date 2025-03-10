@@ -8,6 +8,13 @@
       "type": "java",
       "name": "TreesLeetcode",
       "request": "launch",
+      "mainClass": "TreesLeetcode",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
+      "name": "TreesLeetcode",
+      "request": "launch",
       "mainClass": "Trees.TreesLeetcode",
       "projectName": "Data-Structures-And-Alogorithms_53cb3765"
     },
