@@ -1,5 +1,8 @@
 package Linked_List;
 
+import java.math.BigInteger;
+import java.util.PriorityQueue;
+
 class ListNode {
     int val;
     ListNode next;
@@ -401,6 +404,164 @@ The number of nodes in the list is in the range [0, 500].
 
     }
 
+    // Leetcode Problem No 23 : Merge k Sorted Lists
+
+    PriorityQueue<ListNode> heap = new PriorityQueue<>((a, b) -> a.val - b.val);
+
+    public ListNode mergeKLists(ListNode[] lists) {
+
+        if (lists==null) return null;
+
+          for (int i = 0; i < lists.length; i++) {
+            addInHeap(lists[i]);
+          }
+
+          if (heap.isEmpty()) return null;
+            
+          
+          ListNode head = heap.poll();
+            ListNode prev = head;
+            
+            while (!heap.isEmpty()) {
+               
+                prev.next=heap.poll();
+                prev=prev.next;
+            }
+            prev.next=null;
+        return head;
+    }
+
+    private void addInHeap(ListNode head){
+        
+        while (head!=null) {
+            heap.add(head);
+            head=head.next;
+        }
+    }
+
+    // Leetcode Problem No 2 : Add Two Numbers
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        
+         BigInteger num1 = new BigInteger(digitLinkedList(l1, ""));
+
+        BigInteger num2 = new BigInteger(digitLinkedList(l2, ""));
+
+        BigInteger sum = num1.add(num2);
+
+
+        ListNode head = new ListNode(sum.mod(BigInteger.TEN).intValue());
+        sum = sum.divide(BigInteger.TEN);
+
+        ListNode temp = head;
+
+        while (!sum.equals(BigInteger.ZERO)) {
+
+            temp.next = new ListNode(sum.mod(BigInteger.TEN).intValue());
+
+            sum = sum.divide(BigInteger.TEN);
+
+            temp = temp.next;
+        }
+
+        return head;
+        
+    }
+
+    private String digitLinkedList(ListNode head , String num){
+
+        if (head==null) return num;
+        
+        return digitLinkedList(head.next, head.val+num);
+    }
+
+    // Leetcode Problem No 24 : Swap Nodes in Pairs
+
+    public ListNode swapPairs(ListNode head) {
+
+        if (head==null || head.next==null) return head;
+
+        ListNode temp = head ,temp2 = head.next , prev = null , curr = head , next=head;
+
+        while (true) {
+
+            curr=next;
+            temp=next;
+            prev=null;
+
+            for (int i = 1; i <=2; i++) {
+                curr=next;
+                next=next.next;
+                curr.next=prev;
+                prev=curr;
+            }
+
+            if(next==null) break;
+
+            if (next.next!=null) temp.next=next.next;
+
+            else {
+                temp.next=next;
+                break;
+            }
+            
+        }
+
+        return temp2;
+    }
+
+    // Leetcode Problem No : 86 Partition List
+    public static ListNode partition(ListNode head, int x) {
+
+        if(head==null || head.next==null) return head;
+
+        ListNode minHead = null , maxHead = null , min=null , max=null;
+
+        while (head!=null) {
+
+            if (head.val>=x) {
+                if (maxHead==null) {
+                    maxHead = head;
+                    max=head;
+                   
+                }else{
+                    max.next=head;                   
+                    max=max.next;
+                }
+            }else{
+                if (minHead==null) {
+                    minHead = head;
+                    min=head;
+                    
+                }else{
+                    min.next=head;
+                    min=min.next;
+                }
+            }
+            head=head.next;
+        }
+
+        if (min!=null && max!=null) {
+            min.next=maxHead;
+            max.next=null;
+        }
+        else{
+            return min==null&&max!=null ? maxHead : minHead;           
+        }
+
+        return minHead;
+    }
+
+    public static void main(String[] args) {
+        // Creating the linked list: 1 -> 4 -> 3 -> 2 -> 5 -> 2
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(4);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(2);
+        head.next.next.next.next = new ListNode(5);
+        head.next.next.next.next.next = new ListNode(2);
+        partition(head, 3);
+    }
 }
 
 

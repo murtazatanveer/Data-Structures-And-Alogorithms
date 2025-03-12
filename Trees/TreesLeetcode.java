@@ -1031,6 +1031,49 @@ private void sum(TreeNode root , int [] totalSum , int digit){
         recover(root.right);
     } 
 
+   // Leetcode Problem No 700 : Search in a Binary Search Tree
+
+   public TreeNode searchBST(TreeNode root, int val) {
+
+        if (root==null || root.val==val) return root;
+        
+        return val>root.val ? searchBST(root.right, val) : searchBST(root.left, val);
+   }
+
+   // Leetcode Problem No 513 : Find Bottom Left Tree Value
+
+   public int findBottomLeftValue(TreeNode root) {
+
+    Queue<TreeNode> q = new LinkedList<>();
+    LinkedList<Integer> list = new LinkedList<>();
+
+    q.add(root);
+ 
+    while (!q.isEmpty()) {
+
+        int size = q.size();
+
+        for (int i = 1; i <= size; i++) {
+
+            TreeNode removed = q.remove();
+            if (i==1) list.add(removed.val);            
+
+            if (removed.left!=null) {
+                q.add(removed.left);
+            } 
+            if (removed.right!=null) {
+                q.add(removed.right);
+            }
+
+        }
+        
+    }    
    
+    return list.get(list.size()-1);
+
+   }
+
+   
+
 }
 
