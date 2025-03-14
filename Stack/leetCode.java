@@ -343,6 +343,47 @@ public String removeStars(String s) {
     return new String(chrs);
 }
 
+// Leetcode Problem No 150 : Evaluate Reverse Polish Notation
+public int evalRPN(String[] tokens) {
+
+    Stack<Integer> s = new Stack<>();
+        
+    for (int i = 0; i < tokens.length; i++) {
+
+        if (tokens[i].length()==1 && (tokens[i].charAt(0)=='-'||tokens[i].charAt(0)=='+'||
+        tokens[i].charAt(0)=='/'||tokens[i].charAt(0)=='*')) {
+
+            int num2 = s.pop();
+            int num1 = s.pop();
+
+            switch (tokens[i].charAt(0)) {
+
+                case '+':
+                s.push(num1+num2);
+                break;
+
+                case '-':
+                s.push(num1-num2);
+                break;
+
+                case '/':
+                s.push(num1/num2);
+                break;
+
+                case '*':
+                s.push(num1*num2);
+                break;
+            
+            }
+            
+        }else{
+            s.push(Integer.parseInt(tokens[i]));
+        }
+    }
+
+    return s.pop();
+   }
+
 /* 225. Implement Stack using Queues
 Easy
 Topics

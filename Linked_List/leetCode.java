@@ -2,6 +2,7 @@ package Linked_List;
 
 import java.math.BigInteger;
 import java.util.PriorityQueue;
+import java.util.Stack;
 
 class ListNode {
     int val;
@@ -552,16 +553,7 @@ The number of nodes in the list is in the range [0, 500].
         return minHead;
     }
 
-    public static void main(String[] args) {
-        // Creating the linked list: 1 -> 4 -> 3 -> 2 -> 5 -> 2
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(4);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(2);
-        head.next.next.next.next = new ListNode(5);
-        head.next.next.next.next.next = new ListNode(2);
-        partition(head, 3);
-    }
+ 
 }
 
 

@@ -1073,7 +1073,37 @@ private void sum(TreeNode root , int [] totalSum , int digit){
 
    }
 
-   
 
+   // Leetcode Problem No 968 : Binary Tree Cameras
+   static int minCameras=0;
+   static public int minCameraCover(TreeNode root) {
+
+    if (root.left==null && root.right==null) return 1;
+        
+    return cameras(root)==0 ? ++minCameras : minCameras;
+}
+
+    static int cameras(TreeNode root){
+
+    if(root==null) return -1;
+
+   int left = cameras(root.left);
+   int right = cameras(root.right);
+
+   if ((left==0&&right==-1 || left==-1&&right==0) || (left==1&&right==0 || left==0&&right==1)
+   || (left==0&&right==0)) {
+    minCameras++;
+    return 1;
+   }
+   else if(left==-1&&right==-1) return 0;
+   return -1;
+
+   }
+
+   public static void main(String[] args) {
+            TreeNode root = new TreeNode(0);
+            root.right=new TreeNode(0);
+            minCameraCover(root);
+   }
 }
 
