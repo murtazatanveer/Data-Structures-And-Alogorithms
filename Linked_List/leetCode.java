@@ -595,7 +595,7 @@ The number of nodes in the list is in the range [0, 500].
 
     // Leetcode Problem No 21 : Merge Two Sorted Lists
 
-    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         
         ListNode curr = new ListNode();
         ListNode temp = curr;
@@ -632,7 +632,68 @@ The number of nodes in the list is in the range [0, 500].
         return temp.next;
     }
 
-   
+   // Leetcode Problem No : 203. Remove Linked List Elements
+   public ListNode removeElements(ListNode head, int val) {
+
+        ListNode curr = head , prev = null;
+
+        while (curr!=null) {
+
+            if (curr.val==val) {
+                if (prev!=null) {
+                    ListNode temp = curr;
+                    while (curr!=null && curr.val==val) {
+                        temp=curr;
+                        curr=curr.next;
+                    }
+                    prev.next=curr;
+                    curr=temp;
+                    
+                }else{
+                    head=head.next;
+                    curr=head;
+                    continue;
+                }
+            }
+            prev=curr;
+            curr=curr.next;
+        }
+        return head;
+   }
+
+   // Leetcode Problem No : 328 Odd Even Linked List
+   public static ListNode oddEvenList(ListNode head) {
+       if(head==null || head.next==null) return head;
+       
+       ListNode even = new ListNode();
+       ListNode odd = new ListNode();
+        ListNode evenHead=even;
+       ListNode ptr = head;
+        int count=0;
+
+       boolean isOdd = true;
+       
+
+       while (ptr!=null) {
+            if (isOdd) {
+                odd.next=ptr;                      
+                odd=odd.next;
+                isOdd=false;
+            }else{
+                even.next=ptr;            
+                even=even.next;
+                isOdd=true;
+            }
+            ptr=ptr.next;
+            count++;
+       }
+       
+       odd.next=evenHead.next;
+       
+       if (count%2!=0) even.next=null;
+       
+        return head;
+   }
 
 }
 
