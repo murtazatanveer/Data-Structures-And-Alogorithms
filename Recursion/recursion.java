@@ -8,7 +8,7 @@ public class recursion {
 
     //     System.out.println(ob.BinarySearch(new int[]{5,10,15,20,25,30,35,40,45,50}, 0, 9, 20));
 
-         int []arr = {20,40,25,50,5,20,35,15,20,45,10,30};
+         int []arr = {6,7,8,10,11,3,4,5};
 
     //     ob.bubbleSort(arr, 9);
     //   System.out.println(Arrays.toString(arr));
@@ -23,7 +23,7 @@ public class recursion {
     // System.out.println(ob.countZeros(905600200, 0));
     //System.out.println(ob.isArraySorted(new int[] {1}, 0, 0));
     //System.out.println(ob.linearSearch(arr, 4, 0));
-    System.out.println(ob.multipleOccurrencesLinearSearch(arr, 30));
+    System.out.println(ob.rotatedBinarySearch(arr, 0, arr.length-1, 7));
 
     }
 
@@ -210,5 +210,31 @@ public class recursion {
 
      }
 
-     
+     // Rotated Binary Search
+
+    int rotatedBinarySearch(int [] arr , int start , int end , int target){
+
+        if (start>end) return -1;
+
+        int mid = (start+end)/2;
+
+        if(arr[mid]==target) return mid;
+
+        if (arr[start]<=arr[mid]) {
+            
+            if (target>=arr[start] && target<=arr[mid]) {
+                return rotatedBinarySearch(arr, start, mid-1, target);
+            }else{
+            return rotatedBinarySearch(arr, mid+1, end, target);
+            }
+        }
+        else{
+            if (target>=arr[mid]&&target<=arr[end]) {
+            return rotatedBinarySearch(arr, mid+1, end, target);
+            }
+            else{
+                return rotatedBinarySearch(arr, start, mid-1, target);
+            }
+        }
+    }
 }

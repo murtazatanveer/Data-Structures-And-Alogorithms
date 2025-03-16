@@ -2,7 +2,6 @@ package Linked_List;
 
 import java.math.BigInteger;
 import java.util.PriorityQueue;
-import java.util.Stack;
 
 class ListNode {
     int val;
@@ -553,7 +552,88 @@ The number of nodes in the list is in the range [0, 500].
         return minHead;
     }
 
- 
+    // Leetcode Problem No 82 : Remove Duplicates from Sorted List II
+     ListNode deleteDuplicates2(ListNode head) {
+
+        if (head==null || head.next==null) return head;
+
+        ListNode p1 = head , p2 = head.next , prev=null;
+
+        while (p1!=null && p2!=null) {
+            if (p1.val!=p2.val) {
+                prev=p1;
+                p1=p2;
+                p2=p2.next;
+            }else{
+                int val = p1.val;
+                 ListNode temp=p1;
+                while (p1!=null&&p1.val==val) {
+                    temp=p1;
+                    p1=p1.next;
+                }
+                if (prev==null && p1==null) {
+                    return null;
+                }
+                if (p1==null && prev!=null) {
+                    prev.next=null;
+                    continue;
+                }
+                if (prev==null && p1!=null) {
+                    head=p1;
+                    temp.next=null;
+                    p2=p1.next;
+                    continue;
+                }
+                prev.next=p1;
+                p2=p1.next;
+            }
+        }
+
+        return head;
+
+    }
+
+    // Leetcode Problem No 21 : Merge Two Sorted Lists
+
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        
+        ListNode curr = new ListNode();
+        ListNode temp = curr;
+
+        while (list1!=null && list2!=null) {
+
+            if (list1.val<list2.val) {
+
+                curr.next=list1;
+                list1=list1.next;
+                curr=curr.next;
+
+            }
+            else if (list2.val<list1.val) {
+
+                curr.next=list2;
+                list2=list2.next;
+                curr=curr.next;
+
+            }else{
+
+                curr.next=list1;
+                list1=list1.next;
+                curr=curr.next;
+                curr.next=list2;
+                list2=list2.next;
+                curr=curr.next;
+            
+            }
+        }
+
+        curr.next=(list1==null && list2!=null) ? list2 : list1;
+
+        return temp.next;
+    }
+
+   
+
 }
 
 

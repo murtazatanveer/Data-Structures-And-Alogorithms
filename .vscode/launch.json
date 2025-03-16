@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "leetCode",
+      "request": "launch",
+      "mainClass": "Linked_List.leetCode",
+      "projectName": "Data-Structures-And-Alogorithms_53cb3765"
+    },
+    {
+      "type": "java",
       "name": "TreesLeetcode",
       "request": "launch",
       "mainClass": "TreesLeetcode",
