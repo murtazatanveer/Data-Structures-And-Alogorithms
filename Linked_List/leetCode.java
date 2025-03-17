@@ -1,7 +1,7 @@
 package Linked_List;
 
 import java.math.BigInteger;
-import java.util.PriorityQueue;
+import java.util.*;
 
 class ListNode {
     int val;
@@ -45,10 +45,8 @@ The number of nodes in the list is sz.
 1 <= n <= sz
  
      */
-
-     
-
-      ListNode removeNthFromEnd(ListNode head, int n) {
+   
+ListNode removeNthFromEnd(ListNode head, int n) {
         
         
         int size=size(head);
@@ -695,6 +693,121 @@ The number of nodes in the list is in the range [0, 500].
         return head;
    }
 
+   // Leetcode Problem No 445 : Add Two Numbers II
+   public  ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+
+    ListNode ptr = new ListNode();
+    ListNode head = ptr; 
+
+   
+    String ans = getDigit(l1, BigInteger.ZERO).add(getDigit(l2, BigInteger.ZERO)) + "";
+
+    
+    for (int i = 0; i < ans.length(); i++) {
+        ptr.next = new ListNode(ans.charAt(i) - '0');
+        ptr = ptr.next; 
+    }
+
+    return head.next;
+}
+
+ BigInteger getDigit(ListNode head, BigInteger digit) {
+    if (head == null) return digit;
+    return getDigit(head.next, digit.multiply(BigInteger.TEN).add(BigInteger.valueOf(head.val)));
+}
+
+    // Leetcode Problem No 2095 : Delete the Middle Node of a Linked List
+    public ListNode deleteMiddle(ListNode head) {
+        if (head==null || head.next==null) return null;
+        
+            ListNode fast = head;
+            ListNode slow = head;
+            ListNode prev = null;
+        
+            while (fast.next!=null) {
+
+                prev=slow;
+                slow=slow.next;
+                        
+                if (fast.next.next!=null) {
+                    fast=fast.next.next;                   
+                }else{
+                    prev.next=slow.next;
+                    return head;
+                }
+            }
+            
+            prev.next=slow.next;
+            return head;
+    }
+
+    // Leetcode Problem No : 2487 Remove Nodes From Linked List
+
+    public ListNode removeNodes(ListNode head) {
+
+        if (head==null || head.next==null) return head;
+
+        Stack<ListNode> s = new Stack<>();
+        s.push(head);
+
+        ListNode ptr = head.next;
+
+        while (ptr!=null) {
+            
+            if (ptr.val>s.peek().val) {
+                while (!s.isEmpty() && ptr.val>s.peek().val) {
+                    s.pop();
+                }
+
+                if (s.isEmpty()) {
+                    s.push(ptr);
+                    head=ptr;
+                    ptr=ptr.next;
+                    continue;
+                    
+                }
+            }
+              
+            s.peek().next=ptr;
+            s.push(ptr);               
+            ptr=ptr.next;
+        }
+        
+        return head;
+        
+    }
+
+    // Leetcode Problem No 1669 : Merge In Between Linked Lists
+
+    public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+        
+        ListNode left = null , right = null;
+        ListNode ptr = list1; 
+
+        for (int i = 0; i < a-1; i++) {
+            ptr=ptr.next;
+        }
+        left=ptr;
+
+        for (int i = a-1; i < b+1; i++) {
+            ptr=ptr.next;
+        }
+        right=ptr;
+
+        ListNode temp = list2;
+
+        while (temp.next!=null) {
+            temp=temp.next;
+        }
+
+        temp.next=right;
+
+        if (a==0) return list2;
+
+        left.next=list2;
+        return list1;
+        
+    }
 }
 
 
