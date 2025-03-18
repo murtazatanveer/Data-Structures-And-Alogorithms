@@ -808,6 +808,38 @@ The number of nodes in the list is in the range [0, 500].
         return list1;
         
     }
+
+    // Leetcode Problem No : 2807 Insert Greatest Common Divisors in Linked List
+    public ListNode insertGreatestCommonDivisors(ListNode head) {
+        if (head==null || head.next==null) return head;
+            
+        ListNode curr = head.next;
+        ListNode prev = head;
+
+        while (curr!=null) {
+
+            ListNode internal = new ListNode(gcd(prev.val,curr.val));
+            prev.next=internal;
+            internal.next=curr;
+            prev=curr;
+            curr=curr.next;
+
+        }
+        
+        return head;
+    }
+
+    private int gcd(int num1 , int num2){
+
+        int gcd = 1;
+
+        for (int i = 1; i <= num1 && i<=num2; i++) {
+            gcd = num1%i==0 && num2%i==0 ? i : gcd;
+        }
+
+        return gcd;
+    }
+
 }
 
 
