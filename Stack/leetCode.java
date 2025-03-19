@@ -384,6 +384,11 @@ public int evalRPN(String[] tokens) {
     return s.pop();
    }
 
+   // Leetcode Problem No 224 : Basic Calculator
+   public int calculate(String s) {
+        
+   }
+
 /* 225. Implement Stack using Queues
 Easy
 Topics
@@ -465,17 +470,6 @@ class MyStack {
  * boolean param_4 = obj.empty();
  */
 
-public static void main(String[] args) {
-    TextEditor textEditor = new TextEditor();
-    textEditor.addText("leetcode");
-    textEditor.deleteText(4);
-    textEditor.addText("practice");
-    textEditor.cursorRight(3);
-    textEditor.cursorLeft(8);
-    // textEditor.deleteText(10);
-    // textEditor.cursorLeft(2);
-    // textEditor.cursorRight(6);
-}
 
 }
 
@@ -608,4 +602,5 @@ class MinStack {
  * String param_3 = obj.cursorLeft(k);
  * String param_4 = obj.cursorRight(k);
  */
+
 
