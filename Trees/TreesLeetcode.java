@@ -1100,10 +1100,46 @@ private void sum(TreeNode root , int [] totalSum , int digit){
 
    }
 
-   public static void main(String[] args) {
-            TreeNode root = new TreeNode(0);
-            root.right=new TreeNode(0);
-            minCameraCover(root);
+
+   // Leetcode Problem No 1161 : Maximum Level Sum of a Binary Tree
+   public int maxLevelSum(TreeNode root) {
+    
+    Queue<TreeNode> q = new LinkedList<>();
+
+    q.add(root);
+
+    int max = Integer.MIN_VALUE;
+    int maxLevel=0;
+    int level=1;
+ 
+    while (!q.isEmpty()) {
+
+        int size = q.size();
+
+        int levelSum = 0;
+       
+        for (int i = 1; i <= size; i++) {
+
+            TreeNode removed = q.remove();
+            levelSum += removed.val;
+
+            if (removed.left!=null) {
+                q.add(removed.left);
+            } 
+            if (removed.right!=null) {
+                q.add(removed.right);
+            }
+
+        }
+
+        if (levelSum>max) {
+            max=levelSum;
+            maxLevel=level;
+        }
+        level++;
+    }    
+    return maxLevel;
    }
+
 }
 

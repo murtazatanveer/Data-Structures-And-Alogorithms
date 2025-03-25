@@ -4,7 +4,7 @@ import java.util.*;
 //Building MIN-HEAP
 public class heap {
 
-     private node root;
+    private node root;
    private ArrayList<node> list = new ArrayList<>();
 
     heap(){

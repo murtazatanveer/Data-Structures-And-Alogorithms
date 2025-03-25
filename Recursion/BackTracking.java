@@ -97,4 +97,29 @@ public class BackTracking {
 
     }
 
+    // Leetcode Problem No 39 : Combination Sum
+
+    List<List<Integer>> nums = new ArrayList<>();
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        sumCombinations(candidates, new ArrayList<>(), target, 0,1);
+        return nums;
+    }
+
+    void sumCombinations( int [] arr , List<Integer> comb , int target , int sum , int i){
+
+        if (sum>target) return;
+
+        if (sum==target) {
+            nums.add(new ArrayList<>(comb));
+            return;
+        }
+
+        for (int j=i;j < arr.length; i++) {
+            comb.add(arr[j]);
+            sumCombinations(arr, comb, target, sum+arr[j],j);
+            comb.remove(comb.size()-1);
+        }
+
+    }
+
 }
