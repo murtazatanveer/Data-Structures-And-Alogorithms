@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Linear_Search",
+      "request": "launch",
+      "mainClass": "Linear_Search.Linear_Search",
+      "projectName": "Data-Structures-And-Alogorithms-1_8ddaf7c9"
+    },
+    {
+      "type": "java",
       "name": "BackTracking",
       "request": "launch",
       "mainClass": "Recursion.BackTracking",

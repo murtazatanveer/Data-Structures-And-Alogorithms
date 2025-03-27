@@ -1141,5 +1141,48 @@ private void sum(TreeNode root , int [] totalSum , int digit){
     return maxLevel;
    }
 
+   //Leetcode Problem No 872 : Leaf-Similar Trees
+
+   public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+
+        ArrayList<Integer> l1 = new ArrayList<>();
+        ArrayList<Integer> l2 = new ArrayList<>();
+        
+        leafValue(root1, l1);
+        leafValue(root2, l2);
+        
+        return l1.equals(l2);
+   }
+
+   private void leafValue(TreeNode root , ArrayList<Integer> list){
+
+        if(root==null) return;
+        
+        leafValue(root.left, list);
+        leafValue(root.right, list);
+
+        if(root.left==null && root.right==null) list.add(root.val);
+        
+   }
+
+
+   // Leetcode Problem No : 1448 Count Good Nodes in Binary Tree
+   int count=0;
+   public int goodNodes(TreeNode root) {
+        GoodNodes(root , root.val);
+        return count;
+   }
+
+   private void GoodNodes(TreeNode root , int max){
+        if(root==null) return;
+
+        if(root.val>=max){
+            max=root.val;
+            count++;
+        }
+        GoodNodes(root.left,max);
+        GoodNodes(root.right,max);
+   }
+
 }
 

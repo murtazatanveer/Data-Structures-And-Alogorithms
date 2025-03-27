@@ -384,10 +384,7 @@ public int evalRPN(String[] tokens) {
     return s.pop();
    }
 
-   // Leetcode Problem No 224 : Basic Calculator
-   public int calculate(String s) {
-        
-   }
+   
 
 /* 225. Implement Stack using Queues
 Easy
@@ -470,7 +467,45 @@ class MyStack {
  * boolean param_4 = obj.empty();
  */
 
+// Leetcode Problem No 735 : Asteroid Collision
+public int[] asteroidCollision(int[] asteroids) {
+        
+    Stack<Integer> s = new Stack<>();
+    
+    
+    for (int i = 0; i < asteroids.length; i++) {
+        if (asteroids[i]>0) {
+            s.push(asteroids[i]);
+        }else{
 
+            int element = asteroids[i];
+            boolean flag=true;
+            while (!s.isEmpty() && s.peek()>0 && element<0) {     
+
+                if(s.peek()==Math.abs(element)){
+                    s.pop();
+                    flag=false;
+                    break;
+                }              
+                element = s.peek() > Math.abs(element) ? s.peek() : element;
+                s.pop();
+
+            }
+            
+           if (flag) {
+            s.push(element);
+           }
+        }
+    }
+    
+    int temp[] = new int[s.size()];
+
+    for (int i = temp.length-1; i>=0; i--) {
+        temp[i]=s.pop();
+    }
+    return temp;
+}
+//s.peek() > Math.abs(asteroids[i]) ? s.peek() : asteroids[i];
 }
 
 // Leetcode Problem No 155. Min Stack

@@ -1,7 +1,6 @@
 package Linear_Search;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 class linerSearch{
 
@@ -1458,58 +1457,7 @@ private boolean isPrime(int num){
     
 }
 
+
 }
 
-public class Linear_Search {
 
-    public static void main(String [] args){
-
-         linerSearch test = new linerSearch();
-
-         int []arr = {101,134,67,4,90,163,1111,63,10101,555,-99,0};
-
-        System.out.println(test.givenElementIndex(arr, 23));
-
-        System.out.println(test.givenElementIndex(arr, 29));
-
-        System.out.println(test.isElementExist(arr, 50));
-
-        System.out.println(test.isElementExist(arr, 90));
-
-        System.out.println(test.indexOfMaxElement(arr));
-
-        String s = "Murtaza";
-
-        System.out.println(test.isCharExist(s, 't'));
-
-        System.out.println(test.isCharExist(s, 'o'));
-
-        int [][]arr2d = {{10,80,30},{50,70,19},{10,65,45},{100,50,-10}};
-
-        System.out.println(Arrays.toString(test.elementIndex(arr2d, 65)));
-        System.out.println(Arrays.toString(test.elementIndex(arr2d, 20)));
-        
-        //System.out.println(test.numsWithEvenDigits(arr));
-
-       // System.out.println(test.maxWealth(arr2d));
-
-        int []arrTest1 = {2,3,4,7,11};
-        
-        System.out.println(test.findKthPositive(arrTest1, 5));
-
-        int []arrTest2 = {1,2,3,4};
-
-        System.out.println(test.findKthPositive(arrTest2, 2));
-
-        int []arrTest3 = {1,3,5,6};
-
-        System.out.println(test.searchInsert(arrTest3, 5));
-        System.out.println(test.searchInsert(arrTest3, 2));
-        System.out.println(test.searchInsert(arrTest3, 7));
-
-       
-
-       
-    }
-    
-}
