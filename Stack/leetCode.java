@@ -505,11 +505,45 @@ public int[] asteroidCollision(int[] asteroids) {
     }
     return temp;
 }
-//s.peek() > Math.abs(asteroids[i]) ? s.peek() : asteroids[i];
+
+// Leetcode Problem No 71 : Simplify Path
+public static String simplifyPath(String path) {
+
+    String[] components = path.split("/");
+
+    Stack<String> st = new Stack<>();
+
+    for (String com : components) {
+
+        if (com.equals(".") || com.isEmpty()) {
+            continue;
+        }
+
+        if (com.equals("..")) {
+            if(!st.isEmpty())st.pop();
+            continue;
+        }
+        st.push(com);
+    }
+
+    int size = st.size();
+   
+    String result = "";
+
+   while (!st.isEmpty()) {
+    result="/"+st.pop()+result;
+   }
+           
+    return size==0 ? "/" : result;
+}
+
+public static void main(String[] args) {
+    simplifyPath("/.../a/../b/c/../d/./");
+}
+
 }
 
 // Leetcode Problem No 155. Min Stack
-
 
 class MinStack {
 

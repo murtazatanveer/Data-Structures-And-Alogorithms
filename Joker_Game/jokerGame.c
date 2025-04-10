@@ -19,7 +19,7 @@ int main() {
 
     printf("\nEnter Player 1 Name : ");
     scanf("%25s",player1);
-
+    
     printf("\nEnter Player 2 Name : ");
     scanf("%25s",player2);
 
